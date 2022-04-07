@@ -58,7 +58,7 @@ def compile_source(source: OneFlowModelFile, config: Config) -> OnnxModel:
     model.load_state_dict(flow.load(source.model_path))
     model.eval()
     model_graph = Graph(model)
-    model_graph(dummy_inputs)
+    model_graph(*dummy_inputs)
 
     tmpdirname = 'temp'
     flow.save(model.state_dict(), tmpdirname)
